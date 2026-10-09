@@ -8,6 +8,9 @@ Home, Products, Sales & Marketing Hub, AI Learning Hub, About, Blog, Contact, pl
 
 ## Local preview
 
+Before publishing changes to `app.js` or `styles.css`, run `node scripts/version-assets.cjs`.
+This updates their URLs in every HTML page so visitors receive the new files even when the host caches assets for a week.
+
 Open `index.html` directly, or run any static file server from this directory. Navigation uses ordinary `.html` URLs and works on shared hosting.
 
 ## Replace before launch
