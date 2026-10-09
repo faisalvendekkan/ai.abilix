@@ -28,6 +28,49 @@ function contactBody(){return `<section class="section"><div class="container co
 function blogBody(){let articles=[['AI Basics','ChatGPT for Business: A Practical Guide','Learn where generative AI fits into day-to-day work.','photo-1677442136019-21780ecad995'],['Sales & CRM','AI-Powered CRM for SMEs','A simple guide to building stronger customer relationships.','photo-1460925895917-afdab827c52f'],['Productivity','Prompt Engineering for Everyday Work','Write better prompts and get useful results faster.','photo-1455390582262-044cde3d'],['Marketing','Social Media Content Planning with AI','Plan consistent campaigns across your channels.','photo-1611162617474-5b21e879e113'],['Business Tips','Practical AI Steps for SMEs','A clear starting point for your business.','photo-1521737711867-e3b97375f902'],['Automation','API, Webhook, MCP: What’s the Difference?','Understand the connections powering modern workflows.','photo-1558494949-ef010cbdcc31']];return `<section class="section"><div class="container"><div class="blog-filter"><span class="eyebrow">BROWSE BY TOPIC</span><div>${['All Posts','AI Basics','ChatGPT','Sales & CRM','Marketing','Automation','Business Tips'].map(x=>`<button class="chip">${x}</button>`).join('')}</div></div><div class="blog-layout"><div class="article-grid">${articles.map(x=>`<article class="article-card"><img src="https://images.unsplash.com/${x[3]}?auto=format&fit=crop&w=700&q=80" alt=""><div class="article-content"><span class="eyebrow">${x[0]}</span><small>Oct 8, 2026 · 6 min read</small><h3>${x[1]}</h3><p>${x[2]}</p><a href="contact.html">Read More →</a></div></article>`).join('')}</div><aside class="sidebar"><h3>Search Blog</h3><input placeholder="Search articles..."><h3>Popular Articles</h3><p>ChatGPT for Business</p><p>Prompt Engineering Guide</p><p>AI-Powered CRM for SMEs</p></aside></div></div></section><section class="section section-soft"><div class="container cta-banner"><div><span class="eyebrow">GET NEW ARTICLES IN YOUR INBOX</span><h2>Practical AI, delivered.</h2><p>Helpful resources and practical guidance for your business.</p></div><form class="subscribe"><input required type="email" placeholder="Enter your email address"><button class="button button-primary">Subscribe →</button></form></div></section>`}
 function footer(){return `<footer class="footer"><div class="container footer-top">${logo(true)}<div><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">Products</a><a href="blog.html">Blog</a><a href="about.html">About</a></div><div><h4>Explore</h4><a href="sales-marketing.html">Sales & Marketing Hub</a><a href="learning-hub.html">AI Learning Hub</a><a href="ai-tools.html">AI Tools</a><a href="ai-prompts.html">AI Prompts</a></div><div><h4>Get in touch</h4><a href="mailto:hello@abilix.in">hello@abilix.in</a><a href="tel:+919876543210">+91 98765 43210</a><a>Kerala, India</a></div><div><h4>One Business.</h4><p>Connected Systems.<br>Powered by AI.</p></div></div><div class="container footer-bottom"><span>© 2026 Abilix. All rights reserved.</span><span>Privacy Policy　|　Terms of Service</span><b>Enabling Every Ability.</b></div></footer>`}
 document.getElementById('app').innerHTML=header()+hero()+standardBody()+footer();
+if(page==='home')initHomeMotion();
+
+function initHomeMotion(){
+  document.body.classList.add('home-page');
+  const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(!('IntersectionObserver' in window)||!Element.prototype.animate)return;
+  const revealed=new WeakSet(),active=new Set();
+  const items=document.querySelectorAll('.section-heading,.platform-card,.step,.feature-card,.cta-banner');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(({target,isIntersecting})=>{
+      if(!isIntersecting)return;
+      observer.unobserve(target);
+      if(revealed.has(target)||preference.matches)return;
+      revealed.add(target);
+      const siblings=Array.from(target.parentElement.children);
+      const stagger=target.matches('.platform-card,.step,.feature-card')?Math.min(siblings.indexOf(target),3)*65:0;
+      const animation=target.animate([
+        {opacity:0,transform:'translateY(22px)'},
+        {opacity:1,transform:'translateY(0)'}
+      ],{duration:650,delay:stagger,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'});
+      active.add(animation);
+      const cleanup=()=>active.delete(animation);
+      animation.addEventListener('finish',cleanup,{once:true});
+      animation.addEventListener('cancel',cleanup,{once:true});
+    });
+  },{threshold:.1});
+  const syncMotion=()=>{
+    observer.disconnect();
+    if(preference.matches){
+      active.forEach(animation=>animation.cancel());
+      return;
+    }
+    items.forEach(item=>{if(!revealed.has(item))observer.observe(item)});
+  };
+  preference.addEventListener('change',syncMotion);
+  // Keyboard navigation should never wait for a reveal to finish.
+  document.addEventListener('focusin',event=>{
+    active.forEach(animation=>{
+      if(animation.effect.target.contains(event.target))animation.cancel();
+    });
+  });
+  syncMotion();
+}
 const toggle=document.querySelector('.menu-toggle'),menu=document.querySelector('.nav');toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.classList.toggle('open',open);document.body.classList.toggle('menu-open',open)});
 document.querySelectorAll('form.contact-form').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();f.querySelector('.form-status').textContent='Thank you — your details are ready. Connect this form to your preferred form service to receive submissions.';f.reset()}));
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('selected'));c.classList.add('selected')}));

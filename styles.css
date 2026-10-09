@@ -15,6 +15,42 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
 /* Display the supplied Abilix artwork without its outer whitespace. */
+/* Home page motion is opt-in; content stays visible without animation support. */
+@media(prefers-reduced-motion:no-preference){
+  .home-page .hero-copy>*{animation:home-rise .75s cubic-bezier(.22,1,.36,1) both}
+  .home-page .hero-copy>h1{animation-delay:.09s}
+  .home-page .hero-copy>p{animation-delay:.18s}
+  .home-page .hero-actions{animation-delay:.27s}
+  .home-page .trust-row{animation-delay:.36s}
+  .home-page .hero-visual>img{animation:home-rise 1s .18s cubic-bezier(.22,1,.36,1) backwards}
+  .home-page .float-card{animation:home-float 4s .45s ease-in-out backwards}
+  .home-page .hero-art{animation:home-grid-drift 4.5s ease-in-out}
+  .home-page .platform-card,.home-page .feature-card,.home-page .step{
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .home-page .button b{transition:transform .2s ease}
+  .home-page .button:hover b,.home-page .button:focus-visible b{transform:translateX(4px)}
+  .home-page .hero-copy:focus-within>*{animation:none}
+}
+@media(prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  .home-page .platform-card:hover,.home-page .feature-card:hover,.home-page .step:hover{
+    transform:translateY(-5px);border-color:#9bc3f7;box-shadow:0 16px 32px #245e9a18;
+  }
+}
+@keyframes home-rise{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes home-float{
+  0%,100%{transform:translateY(0)}
+  30%{transform:translateY(-9px)}
+  65%{transform:translateY(-3px)}
+}
+@keyframes home-grid-drift{
+  0%,100%{transform:translateY(0);opacity:.35}
+  50%{transform:translateY(-12px);opacity:.5}
+}
+
 .header{height:116px}
 .nav>a:not(.nav-cta){height:116px}
 .logo{min-width:150px;gap:0}
