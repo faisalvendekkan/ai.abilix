@@ -69,8 +69,8 @@
   box-shadow:0 9px 22px rgba(8,97,232,.24);
 }
 .nav-cta:hover{background:linear-gradient(135deg,#147cf8,#0648bd)}
-.header .nav-wrap{align-items:center}
-.header .nav{height:100%;align-items:center}
+.header .nav-wrap{align-items:center;justify-content:flex-start;gap:clamp(42px,4.6vw,72px)}
+.header .nav{height:100%;align-items:center;justify-content:space-between;gap:10px;flex:1;min-width:0}
 .header .logo{height:100%;min-width:96px;gap:0;align-items:center;flex:0 0 96px}
 .header .logo-frame{display:block;width:96px;height:68px;overflow:hidden;flex:none}
 .header .logo-image{display:block;width:96px;height:auto;max-width:none;transform:translateY(-8px)}
@@ -101,6 +101,7 @@
 
 @media(max-width:1100px){
   .header{height:72px}
+  .header .nav-wrap{justify-content:space-between;gap:20px}
   .header .logo{min-width:88px;flex-basis:88px}
   .header .logo-frame{width:88px;height:63px}
   .header .logo-image{width:88px;transform:translateY(-7px)}
