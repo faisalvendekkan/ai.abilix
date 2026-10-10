@@ -83,19 +83,19 @@
 .footer:before{width:420px;height:420px;right:-190px;top:-250px;background:radial-gradient(circle,#287df32d,transparent 69%)}
 .footer:after{width:330px;height:330px;left:-170px;bottom:-210px;background:radial-gradient(circle,#7d59e821,transparent 70%)}
 .footer-top,.footer-bottom{position:relative;z-index:1}
-.footer-top{gap:34px;padding-bottom:42px}
+.footer-top{gap:34px;padding-bottom:42px;align-items:start}
 .footer-top>div:not(:first-child){padding-left:20px;border-left:1px solid rgba(255,255,255,.1)}
 .footer h4{margin:2px 0 14px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#fff}
 .footer-top a:not(.logo),.footer-top p{font-size:11px;line-height:1.7;color:#b9cce6}
 .footer-top a:not(.logo){width:max-content;max-width:100%;transition:color .18s,transform .18s}
 .footer-top a:not(.logo):hover{color:#fff;transform:translateX(3px)}
 .logo-light{
-  min-width:0;justify-self:start;align-self:start;padding:7px 9px;
+  min-width:0;justify-self:start;align-self:start;padding:7px 8px;
   border:1px solid rgba(255,255,255,.72);border-radius:12px;
   background:rgba(255,255,255,.96);box-shadow:0 12px 28px rgba(0,0,0,.18);
 }
-.logo-light .logo-frame{width:122px;height:88px}
-.logo-light .logo-image{width:122px;transform:translateY(-10px)}
+.logo-light .logo-frame{width:104px;height:75px}
+.logo-light .logo-image{width:104px;transform:translateY(-8px)}
 .footer-bottom{padding:19px 0 22px;border-top:1px solid rgba(255,255,255,.14)}
 .footer-bottom b{color:#dceaff;letter-spacing:.04em}
 
@@ -108,6 +108,10 @@
   .header .nav{height:auto;align-items:stretch}
   .nav{top:72px;max-height:calc(100dvh - 72px)}
   .nav>a:not(.nav-cta){height:auto}
+  .footer-top{grid-template-columns:.82fr 1fr 1fr;align-items:stretch}
+  .footer-top>.logo{grid-row:1 / span 2;align-self:center;justify-self:center}
+  .logo-light .logo-frame{width:96px;height:69px}
+  .logo-light .logo-image{width:96px;transform:translateY(-8px)}
   .footer-top>div:not(:first-child){padding-left:16px}
 }
 @media(max-width:560px){
@@ -115,8 +119,10 @@
   .nav{top:68px;max-height:calc(100dvh - 68px)}
   .footer{padding-top:40px}
   .footer-top{gap:24px 18px;padding-bottom:30px}
+  .footer-top>.logo{grid-column:1/-1;justify-self:center;align-self:start}
   .footer-top>div:not(:first-child){padding-left:13px}
   .logo-light{padding:6px 8px}
-  .logo-light .logo-frame{width:108px;height:78px}
-  .logo-light .logo-image{width:108px;transform:translateY(-9px)}
+  .logo-light .logo-frame{width:92px;height:66px}
+  .logo-light .logo-image{width:92px;transform:translateY(-7px)}
+  .footer-bottom{align-items:center;text-align:center}
 }
