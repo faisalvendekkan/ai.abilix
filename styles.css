@@ -69,9 +69,11 @@
   box-shadow:0 9px 22px rgba(8,97,232,.24);
 }
 .nav-cta:hover{background:linear-gradient(135deg,#147cf8,#0648bd)}
-.logo{min-width:112px;gap:0}
-.logo-frame{display:block;width:112px;height:81px;overflow:hidden;flex:none}
-.logo-image{display:block;width:112px;height:auto;max-width:none;transform:translateY(-9px)}
+.header .nav-wrap{align-items:center}
+.header .nav{height:100%;align-items:center}
+.header .logo{height:100%;min-width:96px;gap:0;align-items:center;flex:0 0 96px}
+.header .logo-frame{display:block;width:96px;height:68px;overflow:hidden;flex:none}
+.header .logo-image{display:block;width:96px;height:auto;max-width:none;transform:translateY(-8px)}
 
 .footer{
   position:relative;overflow:hidden;padding-top:54px;
@@ -99,9 +101,10 @@
 
 @media(max-width:1100px){
   .header{height:72px}
-  .logo{min-width:96px}
-  .logo-frame{width:96px;height:69px}
-  .logo-image{width:96px;transform:translateY(-8px)}
+  .header .logo{min-width:88px;flex-basis:88px}
+  .header .logo-frame{width:88px;height:63px}
+  .header .logo-image{width:88px;transform:translateY(-7px)}
+  .header .nav{height:auto;align-items:stretch}
   .nav{top:72px;max-height:calc(100dvh - 72px)}
   .nav>a:not(.nav-cta){height:auto}
   .footer-top>div:not(:first-child){padding-left:16px}
