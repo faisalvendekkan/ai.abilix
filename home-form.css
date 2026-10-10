@@ -1,0 +1,21 @@
+.home-lead-section{background:linear-gradient(135deg,#ecf5ff 0%,#f7faff 55%,#eaf2ff 100%)}
+.home-lead-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,6vw,90px);align-items:center}
+.home-lead-panel{min-width:0}
+.home-lead-copy h2{font:800 clamp(30px,3.5vw,44px)/1.14 Manrope,sans-serif;letter-spacing:-1.4px;color:#0b204b;margin:18px 0 16px;max-width:500px}
+.home-lead-copy p{font-size:16px;line-height:1.65;color:#536681;max-width:490px;margin:0}
+.home-lead-points{display:grid;gap:12px;margin-top:27px;color:#1b538e;font-size:13px;font-weight:700}
+.home-lead-form{display:grid;gap:16px;background:#fff;border:1px solid #dfebfa;border-radius:20px;box-shadow:0 18px 45px #184f9220;padding:clamp(22px,3vw,36px)}
+.home-lead-form h3{font:800 24px/1.2 Manrope,sans-serif;color:#0b204b;margin:0}
+.home-lead-form>p{margin:-10px 0 0;color:#62738b;font-size:12px}
+.home-lead-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.home-lead-wide{grid-column:1/-1}
+.home-lead-form label{display:grid;gap:6px;color:#435571;font-size:12px;font-weight:700}
+.home-lead-form input,.home-lead-form select,.home-lead-form textarea{width:100%;min-width:0;border:1px solid #dce6f2;border-radius:8px;background:#fff;color:#0b204b;padding:12px 13px;font:inherit;font-size:14px;outline:none}
+.home-lead-form textarea{resize:vertical;min-height:106px}
+.home-lead-form input:focus,.home-lead-form select:focus,.home-lead-form textarea:focus{border-color:#76aaf2;box-shadow:0 0 0 3px #e8f2ff}
+.home-lead-form .button{width:100%;font-size:14px}
+.home-lead-form .button:disabled{opacity:.65;cursor:wait}
+.home-lead-form .home-lead-note{margin:-5px 0 0;text-align:center}
+.home-lead-panel .crm-form-note{box-shadow:0 8px 22px #184f9214}
+@media(max-width:900px){.home-lead-grid{grid-template-columns:1fr;gap:28px}.home-lead-copy h2,.home-lead-copy p{max-width:680px}}
+@media(max-width:560px){.home-lead-fields{grid-template-columns:1fr;gap:14px}.home-lead-wide{grid-column:auto}.home-lead-form{gap:14px}.home-lead-copy h2{font-size:30px}}

@@ -1,6 +1,6 @@
 # Abilix website
 
-Responsive static website built with HTML, CSS, and vanilla JavaScript. No build step or server runtime is required; upload the repository contents to Hostinger's `public_html` directory or connect the GitHub repository to a static hosting workflow.
+Responsive static website built with HTML, CSS, and vanilla JavaScript. No build step or server runtime is required. Hostinger deploys the `main` branch of this repository to `ai.abilix.in` automatically.
 
 ## Pages
 
@@ -13,8 +13,14 @@ This updates their URLs in every HTML page so visitors receive the new files eve
 
 Open `index.html` directly, or run any static file server from this directory. Navigation uses ordinary `.html` URLs and works on shared hosting.
 
+## Website forms
+
+The homepage enquiry form (`home-form.js` and `home-form.css`) and Contact page
+form (`contact-crm.js`) submit to the Abilix CRM website form. Contact page
+business details are included in the lead message. Update the CRM form token in
+both scripts if the CRM form is replaced.
+
 ## Replace before launch
 
 - Confirm the contact email, phone, address, pricing, and any business claims.
 - Replace editorial imagery and sample blog entries with approved Abilix assets and articles.
-- Connect the demo/contact form to a backend or Hostinger form handler; the current form provides client-side validation and a local success state only.
